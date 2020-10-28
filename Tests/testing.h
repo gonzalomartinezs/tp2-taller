@@ -1,25 +1,33 @@
-#ifndef TP1_TESTING_H
-#define TP1_TESTING_H
+#ifndef TESTING_H
+#define TESTING_H
 
-typedef struct{
+#include <string>
+#include <iostream>
+
+class Tester{
+private:
     int exitos;
     int pruebas;
-}Tester;
 
-int testerCreate(Tester* tester);
+public:
+    Tester();
 
-void testerDestroy(Tester* tester);
+    template <typename T> void compare (T expected, T obtained){
+        if (expected == obtained){
+            std::cout <<("\033[1;32mEXITO\033[0;0m\n");
+            this->exitos++;
+        } else {
+            std::cout << "\033[1;31mFALLO: Se esperaba " << expected <<
+                      " y se obtuvo " << obtained << "\033[0;0m\n";
+        }
+        this->pruebas++;
+    };
 
-void testerEqualInts(int expected, int obtained, Tester* tester);
+    void summarize();
 
-void testerEqualStrings(char* expected, char* obtained, Tester* tester);
+    void notifyError(int error_code);
 
-void testerEqualChars(char expected, char obtained, Tester* tester);
+    ~Tester();
 
-void testerEqualPointers(void* expected, void* obtained, Tester* tester);
-
-void testerSummarize(Tester* tester);
-
-void testerNotifyError(int error_code);
-
+};
 #endif //TP1_TESTING_H
