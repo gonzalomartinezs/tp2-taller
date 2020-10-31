@@ -5,28 +5,24 @@
 
 void seAgreganVerticesAlGrafoCorrectamente(Tester& tester){
     Graph graph = Graph();
-    Vertex vertex = Vertex("Leo Mattioli");
+    graph.addVertex("Leo Mattioli");
     std::cout << "Agrego el vértice 'Leo Mattioli' y aparece dentro del grafo."
             << std::endl;
-    graph.addVertex(&vertex);
     tester.compare(true, graph.isVertexInGraph("Leo Mattioli"));
 }
 
 void seIntentaBuscarVerticeQueNoPerteneceAlGrafo(Tester& tester){
     Graph graph = Graph();
-    Vertex vertex = Vertex("Leo Mattioli");
+    graph.addVertex("Leo Mattioli");
     std::cout << "Agrego el vértice 'Leo Mattioli' y al buscar el vértice "
                  "'Los Charros', este no aparece." << std::endl;
-    graph.addVertex(&vertex);
     tester.compare(false, graph.isVertexInGraph("Los Charros"));
 }
 
 void seAgregaAristaCorrectamente(Tester& tester){
     Graph graph = Graph();
-    Vertex vertex1 = Vertex("Leo Mattioli");
-    Vertex vertex2 = Vertex("Karina");
-    graph.addVertex(&vertex1);
-    graph.addVertex(&vertex2);
+    graph.addVertex("Leo Mattioli");
+    graph.addVertex("Karina");
 
     std::cout << "Agrego una arista dirigida que va del vértice 'Leo Mattioli' "
                  "al vértice 'Karina' correctamente." << std::endl;

@@ -1,17 +1,17 @@
-#ifndef TP1_VERTEX_H
-#define TP1_VERTEX_H
+#ifndef VERTEX_H
+#define VERTEX_H
 
 #include <list>
 #include <string>
 
 class Vertex{
 private:
-    std::list<std::string> *adjacent;
+    std::list<std::string> adjacent;
     const std::string name;
 
 public:
     // Crea un vértice listo para ser utilizado.
-    Vertex(std::string name):name(name),adjacent(new std::list<std::string>){};
+    Vertex(std::string name):name(name){};
 
     // Agrega el vértice 'dest' a la lista de adyacentes.
     // Devuelve 0 en caso de éxito, y -1 en caso contrario.
@@ -32,4 +32,4 @@ public:
 };
 
 
-#endif //TP1_VERTEX_H
+#endif
