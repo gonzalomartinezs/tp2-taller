@@ -6,7 +6,7 @@
 
 class eBPFAnalyzer{
 private:
-    Graph& graph;
+    Graph graph;
     std::list<std::pair<std::string, std::string>> references;
     int _modeleBPF(std::ifstream& file);
     bool _hasRightFormat(std::string& line);
@@ -21,10 +21,16 @@ private:
 
 public:
     // Crea un eBPFAnalyzer listo para ser utilizado.
-    eBPFAnalyzer(Graph& recv_graph):graph(recv_graph), references(){};
+    eBPFAnalyzer() {}
 
     // Parsea las instrucciones del eBPF y lo modela como grafo.
     int parseAndModel(const std::string& file_path);
+
+    // Detecta si hay anomalias en el archivo eBPF.
+    // Retorna: 0 si no tiene errores.
+    //         -1 si se detectaron ciclos.
+    //         -2 si hay instrucciones sin utilizar.
+    int detectAnomalies();
 
     // Libera los recursos utilizados por eBPFAnalyzer.
     ~eBPFAnalyzer();

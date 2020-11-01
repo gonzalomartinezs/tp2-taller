@@ -28,10 +28,16 @@ public:
     // Realiza un recorrido DFS del grafo.
     // Retorna -1 si se encontró un ciclo y la cantidad de vértices visitados
     // en caso contrario.
-    int cycleDetectorDFS();
+    size_t cycleDetectorDFS();
 
     // Muestra por terminal cada vértices y los vértices a los que apunta.
     void showAdjacencies();
+
+    // Vacia el grafo.
+    void clear();
+
+    // Retorna la cantidad de vértices del grafo.
+    int getVerticesAmount();
 
     // Libera los recursos del grafo.
     ~Graph();

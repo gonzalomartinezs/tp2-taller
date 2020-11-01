@@ -48,7 +48,7 @@ Vertex* Graph::_getVertex(const std::string& vertex){
     return searched_vertex;
 }
 
-int Graph::cycleDetectorDFS() {
+size_t Graph::cycleDetectorDFS() {
     GraphWalker walker = GraphWalker();
     return walker.detectCycleDFS((this->vertices));
 }
@@ -66,9 +66,19 @@ void Graph::showAdjacencies() {
     }
 }
 
+void Graph::clear() {
+    std::list<Vertex>::iterator it;
+    for (it = (this->vertices).begin(); it != (this->vertices).end(); ++it){
+        (*it).getAdjacent().clear();
+    }
+    this->vertices.clear();
+}
+
+int Graph::getVerticesAmount() {
+    return this->vertices.size();
+}
 
 Graph::~Graph(){
     //do nothing
 }
-
 
