@@ -12,7 +12,7 @@ private:
     Graph graph;
     std::list<std::pair<std::string, std::string>> references;
     int _modeleBPF(std::ifstream& file);
-    bool _hasRightFormat(std::string& line);
+    //bool _hasRightFormat(std::string& line);
     void _extractOperation(const std::string& line, int beginning,
                            std::string& operation);
     void _assignReference(std::string line, const std::string& instruction,

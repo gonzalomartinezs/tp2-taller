@@ -47,7 +47,7 @@ int eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
     std::string line, previous_instr, instruction, operation;
     while (std::getline(file, line)){
         if (!line.empty()) {
-            if (_hasRightFormat(line)){
+//            if (_hasRightFormat(line)){
                 int beginning;
                 size_t colon = line.find(':');
                 if (colon == NONE) {    // no tiene etiqueta
@@ -61,35 +61,35 @@ int eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
                 }
                 graph.addVertex(instruction);
                 _assignReference(line, instruction, operation, previous_instr);
-            } else {
-                return ERROR;
-            }
+//            } else {
+//                return ERROR;
+//            }
         }
     }
     return SUCCESS;
 }
 
 // Verifica si el formato de la instrucción es correcto.
-bool eBPFAnalyzer::_hasRightFormat(std::string &line) {
-    size_t first_space = (line.find(' '));
-    size_t colon = line.find(':');
-    if (first_space == NONE) return false;
-    if (colon == NONE) {
-        if (first_space > line.find_first_not_of(' ')) return false;
-    } else if (first_space < colon || line[colon+1] != ' ') {
-        return false;
-    }
-    size_t commas = std::count(line.begin(), line.end(), ',');
-    size_t commas_and_spaces = 0;
-    size_t pos = line.find(", ");
-    while (pos != NONE) {
-        commas_and_spaces++;
-        pos += 2;
-        pos = line.find(", ", pos);
-    }
-    if (commas != commas_and_spaces) return false;
-    return true;
-}
+//bool eBPFAnalyzer::_hasRightFormat(std::string &line) {
+//    size_t first_space = (line.find(' '));
+//    size_t colon = line.find(':');
+//    if (first_space == NONE) return false;
+//    if (colon == NONE) {
+//        if (first_space > line.find_first_not_of(' ')) return false;
+//    } else if (first_space < colon || line[colon+1] != ' ') {
+//        return false;
+//    }
+//    size_t commas = std::count(line.begin(), line.end(), ',');
+//    size_t commas_and_spaces = 0;
+//    size_t pos = line.find(", ");
+//    while (pos != NONE) {
+//        commas_and_spaces++;
+//        pos += 2;
+//        pos = line.find(", ", pos);
+//    }
+//    if (commas != commas_and_spaces) return false;
+//    return true;
+//}
 
 
 

@@ -1,6 +1,7 @@
 #include "GraphWalker.h"
 #include <string>
 #include <list>
+#include <iostream>
 
 #define NOT_VISITED 0
 #define IN_PROCESS 1
@@ -14,7 +15,7 @@ int GraphWalker::detectCycleDFS(std::list<Vertex> vertices) {
 
     while (!((this->to_visit).empty())){
         Vertex current = (this->to_visit).top();
-        if ((this->visited).at(current.getName()) != IN_PROCESS){
+        if ((this->visited).at(current.getName()) == NOT_VISITED){
             (this->visited).at(current.getName()) = IN_PROCESS;
             std::list<std::string> adjacent = current.getAdjacent();
             std::list<std::string>::iterator it;
@@ -29,8 +30,10 @@ int GraphWalker::detectCycleDFS(std::list<Vertex> vertices) {
             }
         } else {
             (this->to_visit).pop();
-            (this->visited).at(current.getName()) = VISITED;
-            visited_vertices++;
+            if ((this->visited).at(current.getName()) == IN_PROCESS) {
+                (this->visited).at(current.getName()) = VISITED;
+                visited_vertices++;
+            }
         }
     }
     return visited_vertices;

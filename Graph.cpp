@@ -81,6 +81,6 @@ int Graph::getVerticesAmount() {
 }
 
 Graph::~Graph(){
-    //do nothing
+    // do nothing
 }
 
