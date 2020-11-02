@@ -4,7 +4,8 @@
 #include <map>
 #include <string>
 
-void ProtectedResults::addResult(const std::string& file, const std::string& result) {
+void ProtectedResults::addResult(const std::string& file,
+                                 const std::string& result) {
     Lock lock(this->m);
     this->results.insert({file, result});
 }
