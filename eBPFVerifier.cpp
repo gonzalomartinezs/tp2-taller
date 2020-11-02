@@ -1,5 +1,6 @@
 #include "eBPFVerifier.h"
 #include "DetectAnomalies.h"
+#include <list>
 
 eBPFVerifier::eBPFVerifier(int argc, char **argv):files(argc,argv) {
     for (int i = 0; i < atoi(argv[1]); i++){
