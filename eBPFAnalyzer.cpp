@@ -1,5 +1,4 @@
 #include "eBPFAnalyzer.h"
-#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <utility>
@@ -15,16 +14,13 @@
 
 int eBPFAnalyzer::parseAndModel(const std::string& file_path) {
     this->graph.clear();
-    bool succeeded = false;
     std::ifstream file(file_path);
     if (!file) return ERROR;
-    if (_modeleBPF(file) == SUCCESS){
-        _addEdgesToGraph();
-        succeeded = true;
-    }
+    _modeleBPF(file);
+    _addEdgesToGraph();
     this->references.clear();
     file.close();
-    return succeeded? SUCCESS : ERROR;
+    return SUCCESS;
 }
 
 int eBPFAnalyzer::detectAnomalies() {
@@ -43,17 +39,18 @@ eBPFAnalyzer::~eBPFAnalyzer() {
 }
 
 
-int eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
+void eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
+    int line_number = 0;    // para instrucciones repetidas
     std::string line, previous_instr, instruction, operation;
     while (std::getline(file, line)){
         if (!line.empty()) {
-//            if (_hasRightFormat(line)){
                 int beginning;
                 size_t colon = line.find(':');
                 if (colon == NONE) {    // no tiene etiqueta
                     beginning = 0;
                     _extractOperation(line, beginning, operation);
-                    instruction = line.substr(line.find_first_not_of(' '));
+                    instruction = line.substr(line.find_first_not_of(' '))
+                                    + " " + std::to_string(line_number);
                 } else {
                     beginning = line.find_first_not_of(' ', colon + 1);
                     _extractOperation(line, beginning, operation);
@@ -61,36 +58,10 @@ int eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
                 }
                 graph.addVertex(instruction);
                 _assignReference(line, instruction, operation, previous_instr);
-//            } else {
-//                return ERROR;
-//            }
         }
+        line_number++;
     }
-    return SUCCESS;
 }
-
-// Verifica si el formato de la instrucción es correcto.
-//bool eBPFAnalyzer::_hasRightFormat(std::string &line) {
-//    size_t first_space = (line.find(' '));
-//    size_t colon = line.find(':');
-//    if (first_space == NONE) return false;
-//    if (colon == NONE) {
-//        if (first_space > line.find_first_not_of(' ')) return false;
-//    } else if (first_space < colon || line[colon+1] != ' ') {
-//        return false;
-//    }
-//    size_t commas = std::count(line.begin(), line.end(), ',');
-//    size_t commas_and_spaces = 0;
-//    size_t pos = line.find(", ");
-//    while (pos != NONE) {
-//        commas_and_spaces++;
-//        pos += 2;
-//        pos = line.find(", ", pos);
-//    }
-//    if (commas != commas_and_spaces) return false;
-//    return true;
-//}
-
 
 
 // Extrae la operación a realizar (jmp, ret, ldh, ...) de la instrucción.

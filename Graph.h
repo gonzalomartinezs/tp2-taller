@@ -30,9 +30,6 @@ public:
     // en caso contrario.
     size_t cycleDetectorDFS();
 
-    // Muestra por terminal cada vértices y los vértices a los que apunta.
-    void showAdjacencies();
-
     // Vacia el grafo.
     void clear();
 

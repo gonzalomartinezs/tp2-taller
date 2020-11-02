@@ -1,7 +1,6 @@
 #include "GraphWalker.h"
 #include <string>
 #include <list>
-#include <iostream>
 
 #define NOT_VISITED 0
 #define IN_PROCESS 1

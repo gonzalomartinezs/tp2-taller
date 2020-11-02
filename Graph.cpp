@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Graph.h"
 #include "GraphWalker.h"
 #include <string>
@@ -53,19 +52,6 @@ Vertex* Graph::_getVertex(const std::string& vertex){
 size_t Graph::cycleDetectorDFS() {
     GraphWalker walker = GraphWalker();
     return walker.detectCycleDFS((this->vertices));
-}
-
-void Graph::showAdjacencies() {
-    std::list<Vertex>::iterator it;
-    std::list<std::string>::iterator adj;
-    for (it = (this->vertices).begin(); it != (this->vertices).end(); ++it){
-        std::cout << (*it).getName() << " -> ";
-        std::list<std::string> adjacent = (*it).getAdjacent();
-        for (adj = adjacent.begin(); adj != adjacent.end(); ++adj){
-                std::cout << "(" << (*adj) << ") - ";
-        }
-        std::cout << "." << std::endl;
-    }
 }
 
 void Graph::clear() {
