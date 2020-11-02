@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Graph.h"
 #include "GraphWalker.h"
+#include <string>
+#include <list>
 
 #define SUCCESS 0
 #define ERROR -1
@@ -41,7 +43,7 @@ Vertex* Graph::_getVertex(const std::string& vertex){
     for (it = (this->vertices).begin(); it!=(this->vertices).end() && !found;
          ++it){
         found = ((*it).getName() == vertex);
-        if(found){
+        if (found){
             searched_vertex = &(*it);
         }
     }

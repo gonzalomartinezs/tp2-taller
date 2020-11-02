@@ -15,7 +15,7 @@ private:
 public:
     // Crear el objeto, listo para ser utilizado.
     DetectAnomalies(ProtectedFiles& files, ProtectedResults& results, int id):
-                                            files(files), results(results){};
+                                            files(files), results(results){}
 
     // Analiza los archivos en 'files' y carga en 'results' un mensaje que
     // indica si el mismo se encuentra mal generado, contiene ciclos o

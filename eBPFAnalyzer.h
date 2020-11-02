@@ -3,6 +3,9 @@
 
 #include "Graph.h"
 #include <map>
+#include <utility>
+#include <string>
+#include <list>
 
 class eBPFAnalyzer{
 private:

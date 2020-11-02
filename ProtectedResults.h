@@ -13,7 +13,7 @@ private:
 public:
     ProtectedResults() {}
 
-    void addResult(std::string file, std::string result);
+    void addResult(const std::string& file, const std::string& result);
 
     void showResults();
 

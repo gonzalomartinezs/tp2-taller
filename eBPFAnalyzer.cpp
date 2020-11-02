@@ -1,8 +1,10 @@
 #include "eBPFAnalyzer.h"
-#include "Vertex.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <utility>
+#include <string>
+#include <list>
 
 #define SUCCESS 0
 #define ERROR -1
@@ -43,7 +45,7 @@ eBPFAnalyzer::~eBPFAnalyzer() {
 
 int eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
     std::string line, previous_instr, instruction, operation;
-    while(std::getline(file, line)){
+    while (std::getline(file, line)){
         if (!line.empty()) {
             if (_hasRightFormat(line)){
                 int beginning;
@@ -59,7 +61,9 @@ int eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
                 }
                 graph.addVertex(instruction);
                 _assignReference(line, instruction, operation, previous_instr);
-            } else return ERROR;
+            } else {
+                return ERROR;
+            }
         }
     }
     return SUCCESS;
@@ -72,7 +76,9 @@ bool eBPFAnalyzer::_hasRightFormat(std::string &line) {
     if (first_space == NONE) return false;
     if (colon == NONE) {
         if (first_space > line.find_first_not_of(' ')) return false;
-    } else if (first_space < colon || line[colon+1] != ' ') return false;
+    } else if (first_space < colon || line[colon+1] != ' ') {
+        return false;
+    }
     size_t commas = std::count(line.begin(), line.end(), ',');
     size_t commas_and_spaces = 0;
     size_t pos = line.find(", ");
@@ -142,7 +148,7 @@ void eBPFAnalyzer::_parseJumps(std::string line, const std::string& instruction,
 // Convierte todos los elementos de 'references' en aristas del grafo.
 void eBPFAnalyzer::_addEdgesToGraph(){
     std::list<std::pair<std::string, std::string>>::iterator it;
-    for(it = (this->references).begin(); it != (this->references).end(); ++it){
+    for (it = (this->references).begin(); it != (this->references).end(); ++it){
         graph.addEdge(it->first, it->second);
     }
 }

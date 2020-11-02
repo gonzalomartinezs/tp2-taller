@@ -9,7 +9,7 @@ private:
 
 public:
     // Crea un thread listo para ser utilizado.
-    Thread () {}
+    Thread(){}
 
     // Comienza la ejecución del hilo.
     void start();

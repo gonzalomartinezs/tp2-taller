@@ -2,6 +2,7 @@
 #include "ProtectedFiles.h"
 #include "ProtectedResults.h"
 #include "DetectAnomalies.h"
+#include <list>
 
 int main(int argc, char* argv[]){
     ProtectedFiles files(argc, argv);

@@ -1,5 +1,6 @@
-#include <iostream>
 #include "GraphWalker.h"
+#include <string>
+#include <list>
 
 #define NOT_VISITED 0
 #define IN_PROCESS 1
@@ -11,14 +12,14 @@ int GraphWalker::detectCycleDFS(std::list<Vertex> vertices) {
     _initializeVisited(vertices);
     (this->to_visit).push(vertices.front());
 
-    while(!((this->to_visit).empty())){
+    while (!((this->to_visit).empty())){
         Vertex current = (this->to_visit).top();
         if ((this->visited).at(current.getName()) != IN_PROCESS){
             (this->visited).at(current.getName()) = IN_PROCESS;
             std::list<std::string> adjacent = current.getAdjacent();
             std::list<std::string>::iterator it;
             for (it = adjacent.begin(); it != adjacent.end(); ++it){
-                if((this->visited).at(*it) == NOT_VISITED){
+                if ((this->visited).at(*it) == NOT_VISITED){
                     (this->to_visit).push(*_getVertex(vertices,*it));
                 } else if ((this->visited).at(*it) == IN_PROCESS){
                     (this->visited).clear();
@@ -43,16 +44,16 @@ void GraphWalker::_initializeVisited(std::list<Vertex>& vertices){
 }
 
 void GraphWalker::_emptyToVisitStack() {
-    while(!((this->to_visit).empty())){
+    while (!((this->to_visit).empty())){
         (this->to_visit).pop();
     }
 }
 
 Vertex* GraphWalker::_getVertex(std::list<Vertex> &vertices,
-                                std::string name) {
+                                const std::string& name) {
     std::list<Vertex>::iterator it;
     for (it = vertices.begin(); it!=vertices.end(); ++it){
-        if((*it).getName() == name){
+        if ((*it).getName() == name){
             return &(*it);
         }
     }

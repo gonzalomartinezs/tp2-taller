@@ -1,8 +1,9 @@
 #include "ProtectedFiles.h"
 #include "Lock.h"
+#include <string>
 
 ProtectedFiles::ProtectedFiles(int argc, char **argv) {
-    for(int i=2; i<argc; i++){
+    for (int i=2; i<argc; i++){
         this->files.push(std::string(argv[i]));
     }
 }

@@ -4,6 +4,7 @@
 #include <map>
 #include <stack>
 #include <list>
+#include <string>
 #include "Vertex.h"
 
 class GraphWalker{
@@ -12,10 +13,10 @@ private:
     std::stack<Vertex> to_visit;
     void _initializeVisited(std::list<Vertex>& vertices);
     void _emptyToVisitStack();
-    Vertex* _getVertex(std::list<Vertex>& vertices, std::string name);
+    Vertex* _getVertex(std::list<Vertex>& vertices, const std::string& name);
 
 public:
-    GraphWalker():visited(),to_visit(){};
+    GraphWalker():visited(),to_visit(){}
 
     // Realiza un recorrido DFS del grafo.
     // Retorna -1 si se encontró un ciclo y la cantidad de vértices visitados
@@ -23,7 +24,6 @@ public:
     int detectCycleDFS(std::list<Vertex> vertices);
 
     ~GraphWalker();
-
 };
 
 #endif

@@ -12,7 +12,7 @@ private:
 
 public:
     // Crea un grafo listo para ser utilizado.
-    Graph():vertices(){};
+    Graph():vertices(){}
 
     // Agrega un vértice al grafo, reservando memoria para el mismo.
     void addVertex(std::string name);

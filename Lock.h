@@ -9,7 +9,7 @@ private:
 
 public:
     // Realiza un lock sobre el mutex recibido.
-    Lock(std::mutex &m);
+    explicit Lock(std::mutex &m);
 
     // Libera el lock.
     ~Lock();
