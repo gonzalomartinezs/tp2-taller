@@ -21,5 +21,4 @@ private:
     Lock& operator=(Lock&&) = delete;
 };
 
-
 #endif //TP2_TALLER_LOCK_H

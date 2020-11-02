@@ -14,7 +14,7 @@ public:
     // Crea un grafo listo para ser utilizado.
     Graph():vertices(){}
 
-    // Agrega un vértice al grafo, reservando memoria para el mismo.
+    // Agrega un vértice al grafo.
     void addVertex(std::string name);
 
     // Agrega una arista al grafo para conectar 2 vértices ya existentes.
@@ -28,7 +28,7 @@ public:
     // Realiza un recorrido DFS del grafo.
     // Retorna -1 si se encontró un ciclo y la cantidad de vértices visitados
     // en caso contrario.
-    size_t cycleDetectorDFS();
+    int cycleDetectorDFS();
 
     // Vacia el grafo.
     void clear();
@@ -37,7 +37,7 @@ public:
     int getVerticesAmount();
 
     // Libera los recursos del grafo.
-    ~Graph();
+    ~Graph(){}
 };
 
 #endif

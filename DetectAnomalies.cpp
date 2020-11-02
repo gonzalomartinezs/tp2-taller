@@ -16,7 +16,7 @@ void DetectAnomalies::run() {
                 this->results.addResult(file, "FAIL: cycle detected");
             } else if (result == UNUSED_INSTRUCTIONS){
                 this->results.addResult(file, "FAIL: unused instructions"
-                                              " detected");
+                                                    " detected");
             } else {
                 this->results.addResult(file, "GOOD");
             }

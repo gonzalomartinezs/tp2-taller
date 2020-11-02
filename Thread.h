@@ -24,5 +24,4 @@ public:
     virtual ~Thread() {}
 };
 
-
 #endif //TP2_TALLER_THREAD_H

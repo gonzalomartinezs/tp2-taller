@@ -14,11 +14,11 @@
 
 int eBPFAnalyzer::parseAndModel(const std::string& file_path) {
     this->graph.clear();
+    this->references.clear();
     std::ifstream file(file_path);
     if (!file) return ERROR;
     _modeleBPF(file);
     _addEdgesToGraph();
-    this->references.clear();
     file.close();
     return SUCCESS;
 }
@@ -33,12 +33,7 @@ int eBPFAnalyzer::detectAnomalies() {
     return SUCCESS;
 }
 
-
-eBPFAnalyzer::~eBPFAnalyzer() {
-    //do nothing;
-}
-
-
+// Modela las instrucciones del eBPF adaptandolo al formato de un grafo.
 void eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
     int line_number = 0;    // para instrucciones repetidas
     std::string line, previous_instr, instruction, operation;
@@ -113,7 +108,6 @@ void eBPFAnalyzer::_parseJumps(std::string line, const std::string& instruction,
         previous_instr = "";
     }
 }
-
 
 
 // Convierte todos los elementos de 'references' en aristas del grafo.

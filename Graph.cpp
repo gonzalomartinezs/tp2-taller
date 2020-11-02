@@ -35,21 +35,7 @@ bool Graph::isVertexInGraph(const std::string& vertex){
     return found;
 }
 
-Vertex* Graph::_getVertex(const std::string& vertex){
-    Vertex* searched_vertex = nullptr;
-    bool found = false;
-    std::list<Vertex>::iterator it;
-    for (it = (this->vertices).begin(); it!=(this->vertices).end() && !found;
-         ++it){
-        found = ((*it).getName() == vertex);
-        if (found){
-            searched_vertex = &(*it);
-        }
-    }
-    return searched_vertex;
-}
-
-size_t Graph::cycleDetectorDFS() {
+int Graph::cycleDetectorDFS() {
     GraphWalker walker = GraphWalker();
     return walker.detectCycleDFS((this->vertices));
 }
@@ -66,7 +52,16 @@ int Graph::getVerticesAmount() {
     return this->vertices.size();
 }
 
-Graph::~Graph(){
-    // do nothing
+Vertex* Graph::_getVertex(const std::string& vertex){
+    Vertex* searched_vertex = nullptr;
+    bool found = false;
+    std::list<Vertex>::iterator it;
+    for (it = (this->vertices).begin(); it!=(this->vertices).end() && !found;
+         ++it){
+        found = ((*it).getName() == vertex);
+        if (found){
+            searched_vertex = &(*it);
+        }
+    }
+    return searched_vertex;
 }
-

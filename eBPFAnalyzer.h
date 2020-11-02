@@ -23,7 +23,7 @@ private:
 
 public:
     // Crea un eBPFAnalyzer listo para ser utilizado.
-    eBPFAnalyzer() {}
+    eBPFAnalyzer(){}
 
     // Parsea las instrucciones del eBPF y lo modela como grafo.
     int parseAndModel(const std::string& file_path);
@@ -35,7 +35,7 @@ public:
     int detectAnomalies();
 
     // Libera los recursos utilizados por eBPFAnalyzer.
-    ~eBPFAnalyzer();
+    ~eBPFAnalyzer(){}
 };
 
 #endif

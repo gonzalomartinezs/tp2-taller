@@ -20,6 +20,3 @@ std::string ProtectedFiles::getFile() {
     return file;
 }
 
-ProtectedFiles::~ProtectedFiles() {
-    //do nothing
-}

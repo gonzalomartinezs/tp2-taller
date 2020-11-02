@@ -1,9 +1,9 @@
 #include "Lock.h"
 
 Lock::Lock(std::mutex& m) : m(m) {
-    m.lock();
+    this->m.lock();
 }
 
 Lock::~Lock() {
-    m.unlock();
+    this->m.unlock();
 }

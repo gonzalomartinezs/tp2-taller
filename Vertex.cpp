@@ -26,6 +26,3 @@ std::string Vertex::getName() {
     return this->name;
 }
 
-Vertex::~Vertex() {
-    //do nothing
-}

@@ -28,8 +28,7 @@ public:
     std::string getName();
 
     // Libera los recursos del vértice.
-    ~Vertex();
+    ~Vertex(){}
 };
-
 
 #endif

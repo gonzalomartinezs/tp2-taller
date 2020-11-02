@@ -8,7 +8,7 @@ void ProtectedResults::addResult(const std::string& file,
                                  const std::string& result) {
     Lock lock(this->m);
     this->results.insert({file, result});
-}
+} 
 
 void ProtectedResults::showResults() {
     Lock lock(this->m);

@@ -14,7 +14,7 @@ private:
 
 public:
     // Crear el objeto, listo para ser utilizado.
-    DetectAnomalies(ProtectedFiles& files, ProtectedResults& results, int id):
+    DetectAnomalies(ProtectedFiles& files, ProtectedResults& results):
                                             files(files), results(results){}
 
     // Analiza los archivos en 'files' y carga en 'results' un mensaje que
@@ -25,6 +25,5 @@ public:
     // Destruye el objeto.
     ~DetectAnomalies() override{}
 };
-
 
 #endif //TP2_TALLER_DETECTANOMALIES_H

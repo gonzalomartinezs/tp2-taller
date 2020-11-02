@@ -14,23 +14,23 @@ int GraphWalker::detectCycleDFS(std::list<Vertex> vertices) {
 
     while (!((this->to_visit).empty())){
         Vertex current = (this->to_visit).top();
-        if ((this->visited).at(current.getName()) == NOT_VISITED){
-            (this->visited).at(current.getName()) = IN_PROCESS;
+        if ((this->vertices_status).at(current.getName()) == NOT_VISITED){
+            (this->vertices_status).at(current.getName()) = IN_PROCESS;
             std::list<std::string> adjacent = current.getAdjacent();
             std::list<std::string>::iterator it;
             for (it = adjacent.begin(); it != adjacent.end(); ++it){
-                if ((this->visited).at(*it) == NOT_VISITED){
+                if ((this->vertices_status).at(*it) == NOT_VISITED){
                     (this->to_visit).push(*_getVertex(vertices,*it));
-                } else if ((this->visited).at(*it) == IN_PROCESS){
-                    (this->visited).clear();
+                } else if ((this->vertices_status).at(*it) == IN_PROCESS){
+                    (this->vertices_status).clear();
                     _emptyToVisitStack();
                     return CYCLE_FOUND;
                 }
             }
         } else {
             (this->to_visit).pop();
-            if ((this->visited).at(current.getName()) == IN_PROCESS) {
-                (this->visited).at(current.getName()) = VISITED;
+            if ((this->vertices_status).at(current.getName()) == IN_PROCESS) {
+                (this->vertices_status).at(current.getName()) = VISITED;
                 visited_vertices++;
             }
         }
@@ -38,19 +38,22 @@ int GraphWalker::detectCycleDFS(std::list<Vertex> vertices) {
     return visited_vertices;
 }
 
+// Inicializa el map de status de los vértices, marcándolos como no visitados.
 void GraphWalker::_initializeVisited(std::list<Vertex>& vertices){
     std::list<Vertex>::iterator it;
     for (it = vertices.begin(); it!=vertices.end(); ++it){
-        (this->visited).insert({(*it).getName(), NOT_VISITED});
+        (this->vertices_status).insert({(*it).getName(), NOT_VISITED});
     }
 }
 
+// Vacía la pila de vértices a visitar.
 void GraphWalker::_emptyToVisitStack() {
     while (!((this->to_visit).empty())){
         (this->to_visit).pop();
     }
 }
 
+// Retorna el vértice correspondiente al nombre recibido.
 Vertex* GraphWalker::_getVertex(std::list<Vertex> &vertices,
                                 const std::string& name) {
     std::list<Vertex>::iterator it;
@@ -60,9 +63,5 @@ Vertex* GraphWalker::_getVertex(std::list<Vertex> &vertices,
         }
     }
     return nullptr;
-}
-
-GraphWalker::~GraphWalker() {
-    //do nothing
 }
 

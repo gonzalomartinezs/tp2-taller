@@ -9,21 +9,23 @@
 
 class GraphWalker{
 private:
-    std::map<std::string,int> visited;
+    std::map<std::string,int> vertices_status;
     std::stack<Vertex> to_visit;
     void _initializeVisited(std::list<Vertex>& vertices);
     void _emptyToVisitStack();
     Vertex* _getVertex(std::list<Vertex>& vertices, const std::string& name);
 
 public:
-    GraphWalker():visited(),to_visit(){}
+    // Crea un GraphWalker listo para ser utilizado.
+    GraphWalker(){}
 
     // Realiza un recorrido DFS del grafo.
     // Retorna -1 si se encontró un ciclo y la cantidad de vértices visitados
     // en caso contrario.
     int detectCycleDFS(std::list<Vertex> vertices);
 
-    ~GraphWalker();
+    // Libera los recursos del objeto.
+    ~GraphWalker(){}
 };
 
 #endif

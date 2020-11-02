@@ -23,7 +23,7 @@ public:
     std::string getFile();
 
     // Libera los recursos utilizados por el monitor.
-    ~ProtectedFiles();
+    ~ProtectedFiles(){}
 };
 
 
