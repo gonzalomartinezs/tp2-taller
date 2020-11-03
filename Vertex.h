@@ -22,10 +22,10 @@ public:
     bool isAdjacentToVertex(const std::string& vertex);
 
     // Devuelve la lista de visited adyacentes.
-    std::list<std::string> getAdjacent();
+    std::list<std::string> getAdjacent() const;
 
     // Devuelve el nombre del vértice.
-    std::string getName();
+    std::string getName() const;
 
     // Libera los recursos del vértice.
     ~Vertex(){}

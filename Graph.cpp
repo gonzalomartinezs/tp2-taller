@@ -35,7 +35,7 @@ bool Graph::isVertexInGraph(const std::string& vertex){
     return found;
 }
 
-int Graph::cycleDetectorDFS() {
+int Graph::cycleDetectorDFS() const{
     GraphWalker walker = GraphWalker();
     return walker.detectCycleDFS((this->vertices));
 }
@@ -48,7 +48,7 @@ void Graph::clear() {
     this->vertices.clear();
 }
 
-int Graph::getVerticesAmount() {
+int Graph::getVerticesAmount() const{
     return this->vertices.size();
 }
 

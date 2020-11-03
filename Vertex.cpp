@@ -8,7 +8,7 @@ void Vertex::addEdge(Vertex *dest) {
     }
 }
 
-bool Vertex::isAdjacentToVertex(const std::string& vertex) {
+bool Vertex::isAdjacentToVertex(const std::string& vertex){
     bool found = false;
     std::list<std::string>::iterator it;
     for (it = (this->adjacent).begin(); it!=(this->adjacent).end() && !found;
@@ -18,11 +18,11 @@ bool Vertex::isAdjacentToVertex(const std::string& vertex) {
     return found;
 }
 
-std::list<std::string> Vertex::getAdjacent() {
+std::list<std::string> Vertex::getAdjacent() const{
     return (this->adjacent);
 }
 
-std::string Vertex::getName() {
+std::string Vertex::getName() const{
     return this->name;
 }
 

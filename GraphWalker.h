@@ -13,7 +13,8 @@ private:
     std::stack<Vertex> to_visit;
     void _initializeVisited(std::list<Vertex>& vertices);
     void _emptyToVisitStack();
-    Vertex* _getVertex(std::list<Vertex>& vertices, const std::string& name);
+    Vertex* _getVertex(std::list<Vertex>& vertices, const std::string& name)
+                                                                        const;
 
 public:
     // Crea un GraphWalker listo para ser utilizado.

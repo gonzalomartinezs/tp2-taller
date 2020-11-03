@@ -28,13 +28,13 @@ public:
     // Realiza un recorrido DFS del grafo.
     // Retorna -1 si se encontró un ciclo y la cantidad de vértices visitados
     // en caso contrario.
-    int cycleDetectorDFS();
+    int cycleDetectorDFS() const;
 
     // Vacia el grafo.
     void clear();
 
     // Retorna la cantidad de vértices del grafo.
-    int getVerticesAmount();
+    int getVerticesAmount() const;
 
     // Libera los recursos del grafo.
     ~Graph(){}

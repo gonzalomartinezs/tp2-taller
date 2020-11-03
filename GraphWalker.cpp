@@ -55,7 +55,7 @@ void GraphWalker::_emptyToVisitStack() {
 
 // Retorna el vértice correspondiente al nombre recibido.
 Vertex* GraphWalker::_getVertex(std::list<Vertex> &vertices,
-                                const std::string& name) {
+                                const std::string& name) const{
     std::list<Vertex>::iterator it;
     for (it = vertices.begin(); it!=vertices.end(); ++it){
         if ((*it).getName() == name){

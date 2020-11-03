@@ -61,7 +61,7 @@ void eBPFAnalyzer::_modeleBPF(std::ifstream &file) {
 
 // Extrae la operación a realizar (jmp, ret, ldh, ...) de la instrucción.
 void eBPFAnalyzer::_extractOperation(const std::string& line, int beginning,
-                                     std::string& operation){
+                                     std::string& operation) {
     int beginning_op = line.find_first_not_of(' ', beginning);
     int end_op = line.find(' ', beginning_op);
     operation = line.substr(beginning_op, end_op - beginning_op);
