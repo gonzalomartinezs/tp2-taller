@@ -14,12 +14,8 @@ public:
     // Deja el monitor listo para ser utilizado.
     ProtectedFiles(int argc, char**argv);
 
-    // Devuelve true si la pila de archivos se encuentra vacía, false en
-    // caso contrario.
-    bool isEmpty();
-
-    // Retorna el nombre del archivo que se encuentra en el topa de la pila,
-    // desapilandolo.
+    // Retorna el nombre del archivo que se encuentra en el tope de la pila,
+    // desapilandolo, o un string vacío si la pila se encuentra vacía.
     std::string getFile();
 
     // Libera los recursos utilizados por el monitor.

@@ -6,8 +6,8 @@
 #define UNUSED_INSTRUCTIONS -2
 
 void DetectAnomalies::run() {
-    while (!(this->files.isEmpty())){
-        std::string file = this->files.getFile();
+    std::string file;
+    while (!(file = this->files.getFile()).empty()){
         if (this->analyzer.parseAndModel(file) == ERROR){
             this->results.addResult(file, "FAIL: Bad file");
         } else {

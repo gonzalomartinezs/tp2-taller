@@ -8,15 +8,13 @@ ProtectedFiles::ProtectedFiles(int argc, char **argv) {
     }
 }
 
-bool ProtectedFiles::isEmpty() {
-    Lock lock(this->m);
-    return this->files.empty();
-}
-
 std::string ProtectedFiles::getFile() {
     Lock lock(this->m);
-    std::string file = this->files.top();
-    this->files.pop();
+    std::string file;
+    if (!(this->files.empty())){
+        file = this->files.top();
+        this->files.pop();
+    }
     return file;
 }
 

@@ -24,6 +24,9 @@ public:
 
     // Libera los recursos utilizados por el vefificador.
     ~eBPFVerifier();
+
+    eBPFVerifier(const eBPFVerifier& other) = delete;
+    eBPFVerifier& operator=(const eBPFVerifier&) = delete;
 };
 
 

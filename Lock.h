@@ -14,7 +14,6 @@ public:
     // Libera el lock.
     ~Lock();
 
-private:
     Lock(const Lock&) = delete;
     Lock& operator=(const Lock&) = delete;
     Lock(Lock&&) = delete;
